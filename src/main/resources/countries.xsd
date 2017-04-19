@@ -86,6 +86,16 @@
             <xs:enumeration value="GBP"/>
             <xs:enumeration value="EUR"/>
             <xs:enumeration value="PLN"/>
+            <xs:enumeration value="CNY"/>
+            <xs:enumeration value="USD"/>
+            <xs:enumeration value="CHF"/>
+            <xs:enumeration value="NOK"/>
+            <xs:enumeration value="JPY"/>
+            <xs:enumeration value="HUF"/>
+            <xs:enumeration value="HRK"/>
+            <xs:enumeration value="RUB"/>
+            <xs:enumeration value="DKK"/>
+            <xs:enumeration value="SEK"/>
             <xs:enumeration value="CZK"/>
         </xs:restriction>
     </xs:simpleType>

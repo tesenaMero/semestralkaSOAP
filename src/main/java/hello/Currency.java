@@ -16,6 +16,16 @@ public enum Currency {
     GBP,
     EUR,
     PLN,
+    CNY,
+    USD,
+    CHF,
+    NOK,
+    JPY,
+    HUF,
+    HRK,
+    RUB,
+    DKK,
+    SEK,
     CZK;
 
     private Currency() {
