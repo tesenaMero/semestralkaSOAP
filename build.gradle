@@ -1,6 +1,8 @@
 group 'semestralapp'
 version '1.0-SNAPSHOT'
 
+
+
 buildscript {
     repositories {
         maven { url "https://plugins.gradle.org/m2/" }
@@ -17,13 +19,13 @@ buildscript {
 
 }
 
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.byteshifter.soapui'
 
-// tag::xsd[]
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
@@ -59,18 +61,11 @@ task genJaxb {
         }
     }
 }
-// end::xsd[]
 
-task afterEclipseImport {
-    dependsOn "genJaxb"
-}
 
-// tag::jaxb[]
 configurations {
     jaxb
 }
-
-
 
 jar {
     baseName = 'hello'
@@ -78,7 +73,10 @@ jar {
     from genJaxb.classesDir
 }
 
-// tag::dependencies[]
+repositories {
+    mavenCentral()
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -89,6 +87,9 @@ dependencies {
     jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }
+
+
+
 configurations.all {
     resolutionStrategy {
         // force certain versions of dependencies (including transitive)
@@ -105,16 +106,6 @@ configurations.all {
         }
     }
 }
-
-
-repositories {
-    mavenCentral()
-}
-
-
-
-
-
 
 soapui {
     test {
