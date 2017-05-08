@@ -3,17 +3,25 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "http://www.soapui.org/repository/maven2/" }
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath ("gradle.plugin.io.byteshifter:soapui-gradle-plugin:0.2") {
+            exclude module: 'cajo'
+            exclude group: 'org.codehaus.groovy'
+        }
     }
+
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.byteshifter.soapui'
 
 repositories {
     mavenCentral()
@@ -66,6 +74,23 @@ configurations {
     jaxb
 }
 
+configurations.all {
+    resolutionStrategy {
+        // force certain versions of dependencies (including transitive)
+        force 'com.jgoodies:forms:1.1.0',
+                'com.fifesoft:rsyntaxtextarea:2.5.8',
+                'xalan:xalan:2.7.2',
+                'joda-time:joda-time:2.0',
+                'org.slf4j:slf4j-api:1.6.2'
+
+        // add dependency substitution rules
+        dependencySubstitution {
+            substitute module('jtidy:jtidy:r872-jdk15') with module('net.sf.jtidy:jtidy:r938')
+            substitute module('jetty:jetty:6.1.26') with module('org.mortbay.jetty:jetty:6.1.26')
+        }
+    }
+}
+
 jar {
     baseName = 'hello'
     version =  '0.1.0'
@@ -77,9 +102,21 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+
     compile("org.springframework.boot:spring-boot-starter-web-services")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("wsdl4j:wsdl4j:1.6.1")
     jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
+}
+
+
+soapui {
+    test {
+        projectFile = 'src/test/countries-soapui-project.xml'
+        testSuite = 'CountriesPortSoap11 TestSuite'
+        printReport = true
+        junitReport = true
+    }
+
 }
