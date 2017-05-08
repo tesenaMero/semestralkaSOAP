@@ -24,7 +24,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'io.byteshifter.soapui'
+
 
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
@@ -106,6 +106,8 @@ configurations.all {
         }
     }
 }
+
+apply plugin: 'io.byteshifter.soapui'
 
 soapui {
     test {
