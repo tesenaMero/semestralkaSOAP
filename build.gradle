@@ -101,8 +101,8 @@ configurations.all {
 
         // add dependency substitution rules
         dependencySubstitution {
-            substitute module('jtidy:jtidy:r872-jdk15') with module('net.sf.jtidy:jtidy:r938')
-            substitute module('jetty:jetty:6.1.26') with module('org.mortbay.jetty:jetty:6.1.26')
+            it.substitute it.module('jtidy:jtidy:r872-jdk15') with module('net.sf.jtidy:jtidy:r938')
+            it.substitute it.module('jetty:jetty:6.1.26') with module('org.mortbay.jetty:jetty:6.1.26')
         }
     }
 }
