@@ -80,16 +80,6 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web-services")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    compile("wsdl4j:wsdl4j:1.6.1")
-    jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
-    compile(files(genJaxb.classesDir).builtBy(genJaxb))
-}
-
-
-
 configurations.all {
     resolutionStrategy {
         // force certain versions of dependencies (including transitive)
@@ -106,6 +96,18 @@ configurations.all {
         }
     }
 }
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web-services")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile("wsdl4j:wsdl4j:1.6.1")
+    jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
+    compile(files(genJaxb.classesDir).builtBy(genJaxb))
+}
+
+
+
+
 
 apply plugin: 'io.byteshifter.soapui'
 
