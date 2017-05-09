@@ -90,10 +90,7 @@ configurations.all {
                 'org.slf4j:slf4j-api:1.6.2'
 
         // add dependency substitution rules
-        dependencySubstitution {
-            it.substitute it.module('jtidy:jtidy:r872-jdk15') with module('net.sf.jtidy:jtidy:r938')
-            it.substitute it.module('jetty:jetty:6.1.26') with module('org.mortbay.jetty:jetty:6.1.26')
-        }
+
     }
 }
 
