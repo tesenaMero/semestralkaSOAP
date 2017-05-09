@@ -109,7 +109,7 @@ dependencies {
 apply plugin: 'io.byteshifter.soapui'
 
 
-task testSuiteA(type: TestTask) {
+task testSoap(type: TestTask) {
     String fileContents = new File('endpoint').text
     endpoint = fileContents
     projectFile = 'src/test/countries-soapui-project.xml'
