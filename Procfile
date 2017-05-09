@@ -1,2 +1,2 @@
-web: gradle build
-web: gradle task soaptest
+worker: gradle build
+worker: gradle task soaptest
