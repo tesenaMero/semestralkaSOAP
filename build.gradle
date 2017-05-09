@@ -1,6 +1,6 @@
 group 'semestralapp'
 version '1.0-SNAPSHOT'
-
+import io.byteshifter.plugins.soapui.tasks.TestTask
 
 
 buildscript {
@@ -108,12 +108,12 @@ dependencies {
 
 apply plugin: 'io.byteshifter.soapui'
 
-soapui {
-    test {
-        projectFile = 'src/test/countries-soapui-project.xml'
-        testSuite = 'CountriesPortSoap11 TestSuite'
-        printReport = true
-        junitReport = true
-    }
 
+task testSuiteA(type: TestTask) {
+    String fileContents = new File('endpoint').text
+    endpoint = fileContents
+    projectFile = 'src/test/countries-soapui-project.xml'
+    testSuite = 'CountriesPortSoap11 TestSuite'
+    printReport = true
+    junitReport = true
 }
