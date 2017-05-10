@@ -2,7 +2,6 @@ group 'semestralapp'
 version '1.0-SNAPSHOT'
 import io.byteshifter.plugins.soapui.tasks.TestTask
 
-
 buildscript {
     repositories {
         maven { url "https://plugins.gradle.org/m2/" }
@@ -19,12 +18,10 @@ buildscript {
 
 }
 
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
 
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
@@ -102,12 +99,7 @@ dependencies {
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }
 
-
-
-
-
 apply plugin: 'io.byteshifter.soapui'
-
 
 task testSoap(type: TestTask) {
     String fileContents = new File('endpoint').text
@@ -116,4 +108,5 @@ task testSoap(type: TestTask) {
     testSuite = 'CountriesPortSoap11 TestSuite'
     printReport = true
     junitReport = true
+    exportAll = true
 }
