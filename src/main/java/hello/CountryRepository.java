@@ -47,8 +47,7 @@ public class CountryRepository {
     }
 
     public Country findCountry(String name) {
-        Assert.notNull(name);
-
+        Assert.notNull(name, "The country's name must not be null");
         Country result = null;
 
         for (Country country : countries) {
@@ -61,6 +60,7 @@ public class CountryRepository {
     }
 
     public String addCountry(String name, String capital, Currency currency, int population){
+        Assert.notNull(name, "The country's name must not be null");
         String result = "";
         if (countries.contains(findCountry(name))) {
             result = "Country already exists";
@@ -80,6 +80,7 @@ public class CountryRepository {
     }
 
     public boolean deleteCountry(String name){
+        Assert.notNull(name, "The country's name must not be null");
         if (countries.contains(findCountry(name)))
         {
         countries.remove(findCountry(name));
@@ -93,6 +94,7 @@ public class CountryRepository {
     }
 
     public Country editCountry(String name, String capital, Currency currency, int population ) throws Exception {
+        Assert.notNull(name, "The country's name must not be null");
         if (countries.contains(findCountry(name))) {
             for(Country country : countries) {
                 if(country!=null && name.equals(country.getName()))
