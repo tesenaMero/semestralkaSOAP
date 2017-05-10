@@ -61,6 +61,12 @@ public class CountryRepository {
 
     public String addCountry(String name, String capital, Currency currency, int population){
         Assert.notNull(name, "The country's name must not be null");
+        String lol = Integer.toString(population);
+        boolean number = true;
+        if (lol.matches("[a-zA-Z_]+")) {
+            number = false;
+        }
+        Assert.isTrue(number,"Population must be number");
         String result = "";
         if (countries.contains(findCountry(name))) {
             result = "Country already exists";
@@ -95,6 +101,12 @@ public class CountryRepository {
 
     public Country editCountry(String name, String capital, Currency currency, int population ) throws Exception {
         Assert.notNull(name, "The country's name must not be null");
+        String lol = Integer.toString(population);
+        boolean number = true;
+        if (lol.matches("[a-zA-Z_]+")) {
+            number = false;
+        }
+        Assert.isTrue(number,"Population must be number");
         if (countries.contains(findCountry(name))) {
             for(Country country : countries) {
                 if(country!=null && name.equals(country.getName()))
