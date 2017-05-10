@@ -1,1 +1,1 @@
-web: gradle task bootRun
+web:java -jar build/libs/hello-0.1.0.jar
