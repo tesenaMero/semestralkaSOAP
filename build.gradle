@@ -1,3 +1,5 @@
+import io.byteshifter.plugins.soapui.tasks.TestTask
+
 buildscript {
     repositories {
         mavenCentral()
@@ -73,6 +75,20 @@ jar {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+configurations.all {
+    resolutionStrategy {
+        // force certain versions of dependencies (including transitive)
+        force 'com.jgoodies:forms:1.1.0',
+                'com.fifesoft:rsyntaxtextarea:2.5.8',
+                'xalan:xalan:2.7.2',
+                'joda-time:joda-time:2.0',
+                'org.slf4j:slf4j-api:1.6.2'
+
+        // add dependency substitution rules
+
+    }
+}
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web-services")
     testCompile("org.springframework.boot:spring-boot-starter-test")
@@ -80,5 +96,18 @@ dependencies {
     jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }
+
+apply plugin: 'io.byteshifter.soapui'
+
+task testSoap(type: TestTask) {
+    String fileContents = new File('endpoint').text
+    endpoint = fileContents
+    projectFile = 'src/test/countries-soapui-project.xml'
+    testSuite = 'CountriesPortSoap11 TestSuite'
+    printReport = true
+    junitReport = true
+    exportAll = true
+}
+
 // end::dependencies[]
 // end::jaxb[]
