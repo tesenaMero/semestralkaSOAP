@@ -1,4 +1,4 @@
-package hello;
+package io.spring.guides.gs_producing_web_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

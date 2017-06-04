@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package hello;
+package io.spring.guides.gs_producing_web_service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,14 +17,13 @@ import javax.xml.bind.annotation.XmlType;
         propOrder = {"name"}
 )
 @XmlRootElement(
-        name = "getCountryRequest"
+        name = "deleteCountryRequest"
 )
-public class GetCountryRequest {
+public class DeleteCountryRequest {
 
-    @XmlElement(required = true)
     protected String name;
 
-    public GetCountryRequest() {
+    public DeleteCountryRequest() {
     }
 
     public String getName() {

@@ -3,12 +3,11 @@
 // (powered by Fernflower decompiler)
 //
 
-package hello;
+package io.spring.guides.gs_producing_web_service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -32,7 +31,7 @@ public class Country {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String value) {

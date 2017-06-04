@@ -1,21 +1,10 @@
-group 'semestralapp'
-version '1.0-SNAPSHOT'
-import io.byteshifter.plugins.soapui.tasks.TestTask
-
 buildscript {
     repositories {
-        maven { url "https://plugins.gradle.org/m2/" }
-        maven { url "http://www.soapui.org/repository/maven2/" }
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
-        classpath ("gradle.plugin.io.byteshifter:soapui-gradle-plugin:0.2") {
-            exclude module: 'cajo'
-            exclude group: 'org.codehaus.groovy'
-        }
     }
-
 }
 
 apply plugin: 'java'
@@ -23,11 +12,11 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
-
 repositories {
     mavenCentral()
 }
 
+// tag::xsd[]
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
@@ -63,8 +52,13 @@ task genJaxb {
         }
     }
 }
+// end::xsd[]
 
+task afterEclipseImport {
+    dependsOn "genJaxb"
+}
 
+// tag::jaxb[]
 configurations {
     jaxb
 }
@@ -75,23 +69,9 @@ jar {
     from genJaxb.classesDir
 }
 
-
+// tag::dependencies[]
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-configurations.all {
-    resolutionStrategy {
-        // force certain versions of dependencies (including transitive)
-        force 'com.jgoodies:forms:1.1.0',
-                'com.fifesoft:rsyntaxtextarea:2.5.8',
-                'xalan:xalan:2.7.2',
-                'joda-time:joda-time:2.0',
-                'org.slf4j:slf4j-api:1.6.2'
-
-        // add dependency substitution rules
-
-    }
-}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web-services")
@@ -100,15 +80,5 @@ dependencies {
     jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }
-
-apply plugin: 'io.byteshifter.soapui'
-
-task testSoap(type: TestTask) {
-    String fileContents = new File('endpoint').text
-    endpoint = fileContents
-    projectFile = 'src/test/countries-soapui-project.xml'
-    testSuite = 'CountriesPortSoap11 TestSuite'
-    printReport = true
-    junitReport = true
-    exportAll = true
-}
+// end::dependencies[]
+// end::jaxb[]

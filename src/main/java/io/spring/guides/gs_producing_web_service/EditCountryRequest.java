@@ -3,12 +3,11 @@
 // (powered by Fernflower decompiler)
 //
 
-package hello;
+package io.spring.guides.gs_producing_web_service;
 
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,8 +17,7 @@ import javax.xml.bind.annotation.XmlType;
         propOrder = {"name","population","capital","currency"}
 )
 @XmlRootElement(
-        name = "editCountryRequest",
-        namespace="http://hello"
+        name = "editCountryRequest"
 )
 public class EditCountryRequest {
 

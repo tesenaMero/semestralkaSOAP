@@ -1,10 +1,11 @@
-package hello;
+package io.spring.guides.gs_producing_web_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
 
 
 @Endpoint
@@ -29,7 +30,7 @@ public class CountryEndpoint {
 
 
 
-    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCountryRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCountryRequest")
     @ResponsePayload
     public CreateCountryResponse createCountry(@RequestPayload CreateCountryRequest request) {
         CreateCountryResponse response = new CreateCountryResponse();
@@ -37,6 +38,7 @@ public class CountryEndpoint {
 
         return response;
     }
+
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteCountryRequest")
     @ResponsePayload
@@ -47,6 +49,7 @@ public class CountryEndpoint {
         return response;
     }
 
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "editCountryRequest")
     @ResponsePayload
     public EditCountryResponse editCountry(@RequestPayload EditCountryRequest request) throws Exception {
@@ -55,5 +58,5 @@ public class CountryEndpoint {
 
         return response;
     }
-*/
+
 }

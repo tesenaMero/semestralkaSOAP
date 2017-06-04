@@ -3,35 +3,33 @@
 // (powered by Fernflower decompiler)
 //
 
-package hello;
+package io.spring.guides.gs_producing_web_service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
         name = "",
-        propOrder = {"name"}
+        propOrder = {"country"}
 )
 @XmlRootElement(
-        name = "deleteCountryRequest",
-        namespace="http://hello"
+        name = "editCountryResponse"
 )
-public class DeleteCountryRequest {
+public class EditCountryResponse {
 
-    protected String name;
+    protected Country country;
 
-    public DeleteCountryRequest() {
+    public EditCountryResponse() {
     }
 
-    public String getName() {
-        return this.name;
+    public Country getCountry() {
+        return this.country;
     }
 
-    public void setName(String value) {
-        this.name = value;
+    public void setCountry(Country value) {
+        this.country = value;
     }
 }

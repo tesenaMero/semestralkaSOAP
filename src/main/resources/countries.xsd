@@ -4,7 +4,7 @@
     <xs:element name="getCountryRequest">
     <xs:complexType>
         <xs:sequence>
-            <xs:element name="name" type="tns:notnullstring"/>
+            <xs:element name="name" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     </xs:element>
@@ -12,7 +12,7 @@
     <xs:element name="deleteCountryRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="tns:notnullstring"/>
+                <xs:element name="name" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -28,9 +28,9 @@
     <xs:element name="createCountryRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="tns:notnullstring"/>
+                <xs:element name="name" type="xs:string"/>
                 <xs:element name="population" type="xs:int"/>
-                <xs:element name="capital" type="tns:notnullstring"/>
+                <xs:element name="capital" type="xs:string"/>
                 <xs:element name="currency" type="tns:currency"/>
             </xs:sequence>
         </xs:complexType>
@@ -39,9 +39,9 @@
     <xs:element name="editCountryRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="tns:notnullstring"/>
+                <xs:element name="name" type="xs:string"/>
                 <xs:element name="population" type="xs:int"/>
-                <xs:element name="capital" type="tns:notnullstring"/>
+                <xs:element name="capital" type="xs:string"/>
                 <xs:element name="currency" type="tns:currency"/>
             </xs:sequence>
         </xs:complexType>
@@ -64,13 +64,6 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="errorResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="message" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
 
     <xs:element name="getCountryResponse">
         <xs:complexType>
@@ -89,12 +82,6 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:simpleType name="notnullstring">
-        <xs:restriction base="xs:string">
-            <xs:minLength value="1"/>
-            <xs:maxLength value="100"/>
-        </xs:restriction>
-    </xs:simpleType>
 
     <xs:simpleType name="currency">
         <xs:restriction base="xs:string">
