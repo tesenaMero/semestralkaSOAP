@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="651e3345-4c91-44a3-ba1a-52849e073dc9" activeEnvironment="Default" name="semestral_soapui" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="4ada7b88-978b-4009-ba79-60d17a3e5f12" wsaVersion="NONE" name="CountriesPortSoap11" type="wsdl" bindingName="{http://spring.io/guides/gs-producing-web-service}CountriesPortSoap11" soapVersion="1_1" anonymous="optional" definition="https://sheltered-lowlands-56508.herokuapp.com/ws/countries.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://sheltered-lowlands-56508.herokuapp.com/ws/countries.wsdl"><con:part><con:url>https://sheltered-lowlands-56508.herokuapp.com/ws/countries.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://spring.io/guides/gs-producing-web-service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://spring.io/guides/gs-producing-web-service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://spring.io/guides/gs-producing-web-service">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://spring.io/guides/gs-producing-web-service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getCountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteCountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="result" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createCountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="population" type="xs:int"/>
+            <xs:element name="capital" type="xs:string"/>
+            <xs:element name="currency" type="tns:currency"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="editCountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="population" type="xs:int"/>
+            <xs:element name="capital" type="xs:string"/>
+            <xs:element name="currency" type="tns:currency"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="editCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="country" type="tns:country"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="result" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="country" type="tns:country"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="country">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="population" type="xs:int"/>
+          <xs:element name="capital" type="xs:string"/>
+          <xs:element name="currency" type="tns:currency"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="GBP"/>
+          <xs:enumeration value="EUR"/>
+          <xs:enumeration value="PLN"/>
+          <xs:enumeration value="CNY"/>
+          <xs:enumeration value="USD"/>
+          <xs:enumeration value="CHF"/>
+          <xs:enumeration value="NOK"/>
+          <xs:enumeration value="JPY"/>
+          <xs:enumeration value="HUF"/>
+          <xs:enumeration value="HRK"/>
+          <xs:enumeration value="RUB"/>
+          <xs:enumeration value="DKK"/>
+          <xs:enumeration value="SEK"/>
+          <xs:enumeration value="CZK"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part element="tns:getCountryResponse" name="getCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editCountryResponse">
+    <wsdl:part element="tns:editCountryResponse" name="editCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryRequest">
+    <wsdl:part element="tns:getCountryRequest" name="getCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCountryResponse">
+    <wsdl:part element="tns:deleteCountryResponse" name="deleteCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCountryRequest">
+    <wsdl:part element="tns:deleteCountryRequest" name="deleteCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCountryRequest">
+    <wsdl:part element="tns:createCountryRequest" name="createCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editCountryRequest">
+    <wsdl:part element="tns:editCountryRequest" name="editCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCountryResponse">
+    <wsdl:part element="tns:createCountryResponse" name="createCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CountriesPort">
+    <wsdl:operation name="getCountry">
+      <wsdl:input message="tns:getCountryRequest" name="getCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:getCountryResponse" name="getCountryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editCountry">
+      <wsdl:input message="tns:editCountryRequest" name="editCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:editCountryResponse" name="editCountryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCountry">
+      <wsdl:input message="tns:deleteCountryRequest" name="deleteCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteCountryResponse" name="deleteCountryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCountry">
+      <wsdl:input message="tns:createCountryRequest" name="createCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:createCountryResponse" name="createCountryResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountriesPortSoap11" type="tns:CountriesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="editCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="editCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountriesPortService">
+    <wsdl:port binding="tns:CountriesPortSoap11" name="CountriesPortSoap11">
+      <soap:address location="https://sheltered-lowlands-56508.herokuapp.com:443/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint></con:endpoints><con:operation id="572cf7d2-5665-43ec-9218-3b73ac0c585f" isOneWay="false" action="" name="createCountry" bindingOperationName="createCountry" type="Request-Response" outputName="createCountryResponse" inputName="createCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d4f16176-a742-47f8-9831-7d0a8372ff70" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>?</gs:name>\r
+         <gs:population>?</gs:population>\r
+         <gs:capital>?</gs:capital>\r
+         <gs:currency>?</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://spring.io/guides/gs-producing-web-service/CountriesPort/createCountryRequest"/></con:call></con:operation><con:operation id="73f58761-55eb-4d4f-b390-705a2eb8e61f" isOneWay="false" action="" name="deleteCountry" bindingOperationName="deleteCountry" type="Request-Response" outputName="deleteCountryResponse" inputName="deleteCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="aeab5cbf-b6a6-452f-81a2-19ed2c1464cd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>?</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://spring.io/guides/gs-producing-web-service/CountriesPort/deleteCountryRequest"/></con:call></con:operation><con:operation id="a7d61735-4213-4355-9f9c-694adab28bab" isOneWay="false" action="" name="editCountry" bindingOperationName="editCountry" type="Request-Response" outputName="editCountryResponse" inputName="editCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fd789f9a-2335-48ca-9e87-d5fc3bede780" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>?</gs:name>\r
+         <gs:population>?</gs:population>\r
+         <gs:capital>?</gs:capital>\r
+         <gs:currency>?</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://spring.io/guides/gs-producing-web-service/CountriesPort/editCountryRequest"/></con:call></con:operation><con:operation id="c2ca50a4-4d07-476f-9eb1-6eb75e2a6ae7" isOneWay="false" action="" name="getCountry" bindingOperationName="getCountry" type="Request-Response" outputName="getCountryResponse" inputName="getCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="68fcf779-1d2a-4e2b-975b-19a9f34fe093" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>China</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://spring.io/guides/gs-producing-web-service/CountriesPort/getCountryRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="1612aa05-0372-44ce-ba22-79f714d2c009" name="Functional"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="c44f961d-7fb2-41de-97bb-7d4ee208407c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="4b8d0226-5d17-4f31-ab99-3fcc93b654ee" name="create country"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="create country" id="0fa689f9-9661-4da6-b2f0-865468841da0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+         <gs:population>${#TestCase#population}</gs:population>\r
+         <gs:capital>${#TestCase#capital}</gs:capital>\r
+         <gs:currency>${#TestCase#currency}</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="XPath Match" id="2aac39de-9047-4df6-bb56-eabdab85d0cf" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:result</path><content>added</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/createCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="get created country" id="58e5d623-1a06-44ec-8708-67c0fe6399c1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="get created country" id="bf8bbab1-59c3-44dd-a771-e563e114fc52"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d5914fb4-c0a0-4959-97df-781b57de6025"/><con:assertion type="XPath Match" id="df4f397b-1cc9-4ebd-b9ba-718cc98d8ad5" name="equal name"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>${#TestCase#name}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="48d1262b-776e-4144-a4d9-7831f178bc0e" name="equal population"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>${#TestCase#population}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="3bc25a7d-8588-4543-9b69-3f85eab1dc9f" name="equal capital"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>${#TestCase#capital}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="36bee35f-5b7c-44d6-b9b1-c108544efe66" name="equal currency"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>${#TestCase#currency}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="teardown" id="bf556e7c-508b-43c1-ad0e-0c1dec76fcab"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="teardown" id="8ea8cd78-c889-4f0d-9e08-f5b14b25c344"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7bb8486b-53ff-44b7-bddd-2cf20ec6f4be" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>name</con:name><con:value>NewCountry</con:value></con:property><con:property><con:name>population</con:name><con:value>2200</con:value></con:property><con:property><con:name>capital</con:name><con:value>NewCapital</con:value></con:property><con:property><con:name>currency</con:name><con:value>SEK</con:value></con:property></con:properties></con:testCase><con:testCase id="805e724d-3443-4b98-9cc2-ba70bea3de0a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="55767f8e-9eb8-443b-ad28-484176bd7f6d" name="setup"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="setup" id="0fa689f9-9661-4da6-b2f0-865468841da0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+         <gs:population>${#TestCase#population}</gs:population>\r
+         <gs:capital>${#TestCase#capital}</gs:capital>\r
+         <gs:currency>${#TestCase#currency}</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="XPath Match" id="2aac39de-9047-4df6-bb56-eabdab85d0cf" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:result</path><content>added</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/createCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="setup2" id="776623af-4844-41f0-b14c-6c5b036bee75"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="setup2" id="bf8bbab1-59c3-44dd-a771-e563e114fc52"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d5914fb4-c0a0-4959-97df-781b57de6025"/><con:assertion type="XPath Match" id="df4f397b-1cc9-4ebd-b9ba-718cc98d8ad5" name="equal name"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>${#TestCase#name}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="48d1262b-776e-4144-a4d9-7831f178bc0e" name="equal population"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>${#TestCase#population}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="3bc25a7d-8588-4543-9b69-3f85eab1dc9f" name="equal capital"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>${#TestCase#capital}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="36bee35f-5b7c-44d6-b9b1-c108544efe66" name="equal currency"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>${#TestCase#currency}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="e4b2b787-4b84-47b6-a66e-e4d59424a7bf" name="deleteCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="deleteCountry" id="d816cafd-daaa-4996-95bc-aff13c258139"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9d5ef952-d10f-4eaa-ad7e-6e59a4b1a978" name="SOAP Response"/><con:assertion type="Response SLA Assertion" id="656312f3-82dc-4d4c-86ce-72c63a7dc5c0" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="923464cc-858a-4380-99de-374e8f1ece41" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:result</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/deleteCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="country not in the list" id="b961f752-ce8a-4979-b882-2809462f633e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="country not in the list" id="d1f53d0f-86cd-4f85-a497-0b87d39e1c9d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="abad96cc-82eb-49c9-9657-1243442c2edd"/><con:assertion type="XPath Match" id="6eb2527f-f36b-4259-ad89-701b6a872972" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring</path><content>Country does not exist</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>name</con:name><con:value>CountryForDeleting</con:value></con:property><con:property><con:name>population</con:name><con:value>1</con:value></con:property><con:property><con:name>capital</con:name><con:value>Deleted</con:value></con:property><con:property><con:name>currency</con:name><con:value>SEK</con:value></con:property></con:properties></con:testCase><con:testCase id="da1df200-7075-4d9b-a96e-c137cfaf2e1d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="editCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="get existing country" id="9cfaa70e-928d-4209-9b56-be5fbeed20a0"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="get existing country" id="18a5039a-9139-40c5-8771-7dfae27a6380"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="10f4f96b-27a3-4537-8248-a25045c409ae"/><con:assertion type="Response SLA Assertion" id="7b4fac7a-aa35-4e50-a1bb-6f216816fa6b" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="b7e318fc-0076-4149-90ab-2625bd036ca9" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>Spain</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="a870d48e-d27b-4e08-9597-6ea396c396c6" name="XPath Match 1"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>46704314</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match"/><con:assertion type="XPath Match" id="5523f9a5-ba50-48b0-8868-58787a685cd3" name="XPath Match 2"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>Madrid</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="9f374767-06d7-4ecc-8edd-ce6c223847a2" name="XPath Match 3"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>EUR</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="59656516-7dec-48f0-9df2-390a2e12a92f" name="editCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="editCountry" id="7e73febe-3384-47bd-b77f-2a690d42e73b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+         <gs:population>20</gs:population>\r
+         <gs:capital>LALA</gs:capital>\r
+         <gs:currency>GBP</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="f97e3178-da9c-4832-870b-e52bbef10c21" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/editCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="get me edited country" id="6f303a80-c015-48be-9c80-c34103522083"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="get me edited country" id="18a5039a-9139-40c5-8771-7dfae27a6380"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="10f4f96b-27a3-4537-8248-a25045c409ae"/><con:assertion type="Response SLA Assertion" id="7b4fac7a-aa35-4e50-a1bb-6f216816fa6b" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="b7e318fc-0076-4149-90ab-2625bd036ca9" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>Spain</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="a870d48e-d27b-4e08-9597-6ea396c396c6" name="XPath Match 1"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>20</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="5523f9a5-ba50-48b0-8868-58787a685cd3" name="XPath Match 2"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>LALA</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="9f374767-06d7-4ecc-8edd-ce6c223847a2" name="XPath Match 3"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>GBP</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="teardown" id="430d133e-d1e8-484a-acd9-d42f8cb76624"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="teardown" id="c8fc5911-b222-487d-9630-82b51477c279"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+         <gs:population>46704314</gs:population>\r
+         <gs:capital>Madrid</gs:capital>\r
+         <gs:currency>EUR</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="bfd8c6da-fc2b-4bf5-ba7b-017a1a9bcb50"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6fc1262a-1c4c-475d-b9e2-4ae25711e06a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="get existing country" id="11957d40-b02d-477a-b5c3-9c0d003f343b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="get existing country" id="18a5039a-9139-40c5-8771-7dfae27a6380"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="10f4f96b-27a3-4537-8248-a25045c409ae"/><con:assertion type="Response SLA Assertion" id="7b4fac7a-aa35-4e50-a1bb-6f216816fa6b" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="b7e318fc-0076-4149-90ab-2625bd036ca9" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>Spain</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="a870d48e-d27b-4e08-9597-6ea396c396c6" name="XPath Match 1"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>46704314</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="5523f9a5-ba50-48b0-8868-58787a685cd3" name="XPath Match 2"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>Madrid</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="9f374767-06d7-4ecc-8edd-ce6c223847a2" name="XPath Match 3"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>EUR</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="d03fd9e8-0bac-4589-888b-c53784951774" name="Sanity"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="3a29377a-cf57-4aca-8c4c-6df3d4cf7959" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="ecb359d6-81a7-46e8-9e65-6a8c3aeaf4cd" name="createCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="createCountry" id="a0e35e42-399c-446c-8dcf-7085985b9156"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>?</gs:name>\r
+         <gs:population>?</gs:population>\r
+         <gs:capital>?</gs:capital>\r
+         <gs:currency>?</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="00d5e282-ddac-48b1-8383-aec5db44efa7" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="SOAP Response" id="c9b3ddac-b657-4487-a561-139095a2ade1" name="SOAP Response"/><con:assertion type="Schema Compliance" id="4d976a8a-255a-410b-99fa-baaab384f5e5" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:assertion type="Not SOAP Fault Assertion" id="8c445dbc-169b-4e81-a0e0-42f1a879d631" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/createCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c55c4618-dc03-4de4-abea-fdf5f7bd5556" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="43e47cf1-7a6e-49b4-a43c-fcc99fae4eb4" name="deleteCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="deleteCountry" id="f3092e5d-71b4-4a7c-891f-b39eefd25327"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>?</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="b6419482-2909-423c-8068-b462a047d8fc" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="SOAP Response" id="8c1dddae-1f63-4074-90bd-4049ba84f4c9" name="SOAP Response"/><con:assertion type="Response SLA Assertion" id="9960ef9f-abb6-42e6-afe4-6a5dd7af6e65" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Schema Compliance" id="2abf78ea-1450-4d69-b14d-37bcca42c8c8" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/deleteCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f43a095d-c2ff-427d-a3c6-baf6d2ef4a6d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="editCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7e3d5a85-f1b6-4063-9d34-8d0e81263e4b" name="editCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="editCountry" id="83ebc850-c404-4426-8239-b61d5af8bc16"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>?</gs:name>\r
+         <gs:population>?</gs:population>\r
+         <gs:capital>?</gs:capital>\r
+         <gs:currency>?</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="bf1d7ac1-303a-406d-99cb-90075169454d" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="SOAP Response" id="f126c8f8-fe1a-424a-a6d0-5726a813548d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="04332b38-11aa-4d86-a813-2d2cf536da98" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:assertion type="Not SOAP Fault Assertion" id="b25fe01d-6fc6-4197-9c1b-686b268ce4f8" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/editCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="aafd9f63-4232-4467-b876-898520bbf7b4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3b315a62-69e5-4ed2-81f8-bb5fa62e119a" name="getCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="getCountry" id="b0ea447a-d3c5-4401-9839-7a5562d149b4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>?</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="fc59aa4b-ccd2-409d-acf0-471222e44e9e" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Schema Compliance" id="d6252de0-57fe-48c0-a15b-bdbd8ea1ec81" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:assertion type="Not SOAP Fault Assertion" id="2eb7ea82-dbdc-409d-b449-48f5b6d84104" name="SOAP Fault"/><con:assertion type="SOAP Response" id="114a4010-53ca-4b21-b6dd-948b311a4cbc" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/getCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="7e7ce2a8-1a3d-45bb-8d94-7ae16a24f217" name="Smoke"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b2aefbce-6faa-4bf2-a759-118e452b5d9c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="cef409a6-cfb4-46e5-a21e-00e336c7cedb" name="valid creation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="valid creation" id="1a8ee694-be07-4e37-8e58-a573e5f52b53"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+         <gs:population>${#TestCase#population}</gs:population>\r
+         <gs:capital>${#TestCase#capital}</gs:capital>\r
+         <gs:currency>${#TestCase#currency}</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="409996bd-33a2-4b9c-b0ef-0f53e9678ba6" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="06b19de4-f9b4-41e5-a053-b96e6a71d944" name="Valid HTTP Status Codes"><con:configuration><codes>200
+</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="d0c5a089-bb99-4e2f-9881-b85db06999cc" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="c3af1ba8-d777-477b-b995-1b973f067b95" name="XPath Match"><con:configuration><path>declare namespace ns2='http://spring.io/guides/gs-producing-web-service';
+//ns2:result/text()</path><content>added</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/createCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="invalid name" id="44e468c4-ec92-43c8-b133-36400af75bf8"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="invalid name" id="efea56f9-5592-449c-a487-0b92f1bb3bd8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name></gs:name>\r
+         <gs:population>${#TestCase#population}</gs:population>\r
+         <gs:capital>${#TestCase#capital}</gs:capital>\r
+         <gs:currency>${#TestCase#currency}</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Not SOAP Fault Assertion" id="4cf6826c-8422-45f6-a5da-badf868734af" name="SOAP Fault"/><con:assertion type="Valid HTTP Status Codes" id="bac1bbb6-e176-47aa-83c8-92caeef7615e" name="Valid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="7066fcad-dfc4-43bb-8b42-fe103346867a" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="2bebe810-0677-44d4-bb52-b3e04064e0b4" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring/text()</path><content>Name cant be empty</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="invalid population" id="94cbcc13-1d81-4102-8ae2-66a1a09bca7e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="invalid population" id="a1e512c0-a450-485c-b086-2b5b6c62945d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>
+         <gs:population></gs:population>
+         <gs:capital>${#TestCase#capital}</gs:capital>
+         <gs:currency>${#TestCase#currency}</gs:currency>
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="cf9975a0-0bc8-456d-af44-bd2ff5a0601d" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="88fb8e45-e96d-436b-b655-e82b2c8a2174" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring/text()</path><content>Population must be number and higher than 0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="SOAP Response" id="709adb87-8ead-47f5-9a1d-254de83dd368" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="506b3352-80cd-46de-9503-f72ab533977f" name="Valid HTTP Status Codes"><con:configuration><codes>500
+</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="invalid capital" id="80384ffe-6853-41ed-af64-83e6788eb498"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="invalid capital" id="9298be15-ab7c-4817-9818-3ce85332f31c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>
+         <gs:population>${#TestCase#population}</gs:population>
+         <gs:capital></gs:capital>
+         <gs:currency>${#TestCase#currency}</gs:currency>
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Not SOAP Fault Assertion" id="c6b25b44-14bf-4695-9e11-035a2c72eed3" name="SOAP Fault"/><con:assertion type="SOAP Response" id="3544042b-77a1-43d9-ba2f-d884cc925d87" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="969b240c-815c-4cde-96dd-35287d68f262" name="Valid HTTP Status Codes"><con:configuration><codes>500
+</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="b4dd7320-8d46-4879-a3de-ab88d8346033" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring/text()</path><content>Capital cant be empty</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="invalid currency" id="1c701442-37c4-4bda-af0f-f089fa615672"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="invalid currency" id="9518c828-df0f-4a5e-89cf-6cc6dd742f38"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>
+         <gs:population>${#TestCase#population}</gs:population>
+         <gs:capital>${#TestCase#capital}</gs:capital>
+         <gs:currency></gs:currency>
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="89fbf86c-2a88-49d7-b850-525fee35eabb" name="Valid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:assertion type="SOAP Response" id="1ce45357-55c5-4114-ab63-c01d0660b74a" name="SOAP Response"/><con:assertion type="Not SOAP Fault Assertion" id="bb424a33-0aa7-4cb6-bb7a-0b8849fc5127" name="SOAP Fault"/><con:assertion type="XPath Match" id="1a3b0d53-cb43-4de8-9178-ac6d5fe49821" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring/text()</path><content>Currency is not in the list</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="teardown" id="2d261ad6-ecf8-4c2b-94f7-cc0f707f04fd"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="teardown" id="8ea8cd78-c889-4f0d-9e08-f5b14b25c344"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="db8949a4-613a-4ab0-ab09-8d8100ce6e89" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>name</con:name><con:value>Russia</con:value></con:property><con:property><con:name>population</con:name><con:value>146544710</con:value></con:property><con:property><con:name>capital</con:name><con:value>Moskva</con:value></con:property><con:property><con:name>currency</con:name><con:value>SEK</con:value></con:property></con:properties></con:testCase><con:testCase id="cd00d82f-775a-4136-a049-84a7e5b4fc69" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3a75b3d1-0ba0-4f6a-b7e5-e7068642bbe8" name="not existing delete"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="not existing delete" id="680f99bc-ef13-4907-af60-9964b78a0203"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>Indonesia</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7d9b304a-829c-4b72-98f1-e80b45eaaa9f" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="d3dbff5f-20dd-438b-a433-0b41fc35571e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="cf576994-21db-4fea-8089-9e59956eb5fd" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="ccd71aaf-743e-44f6-94f8-96dd6051086a" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:result/text()</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/deleteCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="existing name delete" id="cad13ac9-1f0e-4d30-bcda-d8cef9961c8c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="existing name delete" id="a7c829af-d34c-425f-9f3e-240f692cc973"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="cf7e1f6e-a6a9-449e-a284-029902481ecc" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="9742d27f-d710-4097-be35-abbe4e768913" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="f17b5184-0be6-4749-a32b-648dca3027aa" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:result/text()</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="SOAP Response" id="6ee71458-e5b6-463f-a81a-67d391ad4c28" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="empty name delete" id="8be2411f-0a9d-44b0-80ad-6fa715397c3f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>deleteCountry</con:operation><con:request name="empty name delete" id="8b20f5fa-bfbb-4c7f-b1ce-81c91da98fcb"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:deleteCountryRequest>\r
+         <gs:name></gs:name>\r
+      </gs:deleteCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="0552c481-ca25-4541-9208-4d31d6896b26" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="SOAP Response" id="6d689d4c-52d9-4a22-9322-069d7cc35b5a" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="a722e912-dd54-4054-96c0-70e41a7c82c5" name="Valid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="569b1f02-e2b4-4f3e-bafe-3a1994a4f0ea" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring/text()</path><content>Name cant be empty</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="teardown" id="2f542527-76ab-41f3-a9c9-436e6eb06e10"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>createCountry</con:operation><con:request name="teardown" id="351af092-1690-463d-854e-a484edcbbe1c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:createCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+         <gs:population>46704314</gs:population>\r
+         <gs:capital>Madrid</gs:capital>\r
+         <gs:currency>EUR</gs:currency>\r
+      </gs:createCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c7aad595-d9e5-4fad-88fa-1d91d1353159" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0f307b1d-a9cc-4453-976d-6e506a5edad7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="editCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="5b37f65a-10d7-47e3-839d-0130ffaf1507" name="invalid currency"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="invalid currency" id="3dce0dac-e8f3-449b-8ece-5a16323013a1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+         <gs:population>2</gs:population>\r
+         <gs:capital>Beijing</gs:capital>\r
+         <gs:currency>LOL</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="775e4c27-09e7-4b90-ac78-9f4e6bc6aa17" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="05a62f95-dd24-4333-b0d9-6fa4bde6bd25" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring</path><content>Currency is not in the list</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="9b8b2b8c-a637-404a-a6e0-38f8668e8cc4" name="Valid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/editCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="invalid population" id="3311108f-2491-4343-8ea7-8e3ed6c3b91d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="invalid population" id="4f3b09cb-fa91-4309-80bc-9a5ed1db5055"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+         <gs:population>-1</gs:population>\r
+         <gs:capital>Chinatown</gs:capital>\r
+         <gs:currency>CZK</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2882889b-edf8-41ac-8dab-a8306fbd959c" name="SOAP Response"/><con:assertion type="Response SLA Assertion" id="7fdc8f0c-1551-41b7-a9fd-93be6d55bd2f" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="a85f4c97-c062-4efe-8e3e-6560ad434c33" name="Valid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="13e97736-2d74-4094-a498-5efb4004aa4d" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring</path><content>Population must be higher than 0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="valid edit country" id="7427689d-15de-4156-b8bd-4b75902134b1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="valid edit country" id="a0edfbf5-ddcf-4af5-9ea0-a0738db5fccf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>${#TestCase#name}</gs:name>\r
+         <gs:population>2</gs:population>\r
+         <gs:capital>Merkur</gs:capital>\r
+         <gs:currency>CZK</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="fde54d17-563b-4a69-8796-33a09a390b6b"/><con:assertion type="Response SLA Assertion" id="2fcf5d3c-5cd7-49c5-8ec7-c58d484d021f" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="a683a2d7-474d-4701-a16d-8c98ea08c627" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>${#TestCase#name}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="ca82e202-07c9-420e-8b37-94b7b6e192e2" name="XPath Match 1"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>2</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="a23db1c8-fef3-4540-80f1-a8e4fdee3c94" name="XPath Match 2"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>Merkur</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="8ab845f4-1f0a-4df3-a574-9f967e7095f7" name="XPath Match 3"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>CZK</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="c9cfd493-7812-493e-8696-77c83bef6868" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="empty name" id="864cabbb-a90c-4386-81f1-f3af56589148"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="empty name" id="baacbe3e-bd18-47ad-aa1f-6dd3c3e4f8ca"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name></gs:name>\r
+         <gs:population>22</gs:population>\r
+         <gs:capital>Beijing</gs:capital>\r
+         <gs:currency>CZK</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="506bd86a-59f6-4199-82b6-179539d5aa39"/><con:assertion type="Response SLA Assertion" id="626b561b-20c5-4fa3-af69-bfeadd8e78a5" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="XPath Match" id="f0092b49-cc98-4832-889c-fdade123a738" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring</path><content>Name cant be empty</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="teardown" id="407683e2-88cd-4b75-9ab2-ccfb2a28998c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>editCountry</con:operation><con:request name="teardown" id="1a6ad40a-7ee6-47cf-a2cd-71b05dcc7758"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:editCountryRequest>\r
+         <gs:name>China</gs:name>\r
+         <gs:population>1373541278</gs:population>\r
+         <gs:capital>Peking</gs:capital>\r
+         <gs:currency>CNY</gs:currency>\r
+      </gs:editCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="820abdd7-0b35-45f2-aa0f-7c674df27f57"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>name</con:name><con:value>China</con:value></con:property><con:property><con:name>population</con:name><con:value>1373541278</con:value></con:property><con:property><con:name>capital</con:name><con:value>Peking</con:value></con:property><con:property><con:name>currency</con:name><con:value>CNY</con:value></con:property></con:properties></con:testCase><con:testCase id="06eb185c-2635-44bd-9a36-524bf3cf1c3a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="cb6c4f75-3be1-4b4b-b82d-b75cd3064319" name="empty name"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="empty name" id="34742825-7723-4167-8b1c-65bee63be431"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name></gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" id="9ca0c834-16a3-45f6-9530-d0a7448d80b1" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="SOAP Response" id="696de6bf-5b2d-4d64-bab3-c28be72d3b69" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="5230e0a1-2425-40dc-a39d-aaab3db56ae7" name="Valid HTTP Status Codes"><con:configuration><codes>500
+
+</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="7347ec71-536c-4d89-8709-b3488226ba4a" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/";
+//faultstring</path><content>Name cant be empty</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://spring.io/guides/gs-producing-web-service/CountriesPort/getCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="get existing" id="17b548ed-54a8-45c7-a35f-b8aa35614098"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="get existing" id="e844d1d4-8f88-4efb-9ac4-01f21c719b9b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>Spain</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f3dd3e4c-871d-4eb3-a430-23ff77748566"/><con:assertion type="Response SLA Assertion" id="b0882c8b-0174-4d25-a78e-beb16a0c7984" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="081c6339-91cf-4aa9-86ae-bd30e436f897" name="Valid HTTP Status Codes"><con:configuration><codes>200
+</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="aef06e91-2b23-4169-ac57-1040e6985213" name="XPath Match"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:name</path><content>Spain</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="91333eb4-4e9c-48b2-80db-9c1bade0e48f" name="XPath Match 1"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:population</path><content>46704314</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="57d3bbd5-891b-4864-8436-63a60a07250d" name="XPath Match 2"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:currency</path><content>EUR</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="574fa079-7759-4b15-85bf-c8862041517d" name="XPath Match 3"><con:configuration><path>declare namespace ns2="http://spring.io/guides/gs-producing-web-service";
+//ns2:capital</path><content>Madrid</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="get not existing" id="8658eb64-0fb5-49de-ac79-2472425e4f59"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="get not existing" id="fb2a16a4-d3ed-475c-98ee-807b7cbe4ada"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sheltered-lowlands-56508.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getCountryRequest>\r
+         <gs:name>Aljaska</gs:name>\r
+      </gs:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="26e8e8b9-af7e-4553-b9c9-6ecef89cc698"/><con:assertion type="Response SLA Assertion" id="4e1884b8-a039-48e4-9532-af697ecf0d89" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="9ee7c966-c8f2-4f98-95a5-89a1af1a2428" name="Valid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="0f209ee8-0dad-43c0-a489-9689f1a13942" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+//faultstring</path><content>Country does not exist</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

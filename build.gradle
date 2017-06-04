@@ -105,13 +105,34 @@ dependencies {
 
 apply plugin: 'io.byteshifter.soapui'
 
-task testSoap(type: TestTask) {
+task testFunctional(type: TestTask) {
     String fileContents = new File('endpoint').text
     endpoint = fileContents
-    projectFile = 'src/test/countries-soapui-project.xml'
-    testSuite = 'CountriesPortSoap11 TestSuite'
+    projectFile = 'src/test/semestral-soapui.xml'
+    testSuite = 'Functional'
+    printReport = true
+    outputFolder = 'src/test/testOutput'
+    junitReport = true
+    exportAll = true
+}
+task testSmoke(type: TestTask) {
+    String fileContents = new File('endpoint').text
+    endpoint = fileContents
+    projectFile = 'src/test/semestral-soapui.xml'
+    testSuite = 'Smoke'
+    printReport = true
+    outputFolder = 'src/test/testOutput'
+    junitReport = true
+    exportAll = true
+}
+task testSanity(type: TestTask) {
+    String fileContents = new File('endpoint').text
+    endpoint = fileContents
+    projectFile = 'src/test/semestral-soapui.xml'
+    testSuite = 'Sanity'
     printReport = true
     junitReport = true
+    outputFolder = 'src/test/testOutput'
     exportAll = true
 }
 
