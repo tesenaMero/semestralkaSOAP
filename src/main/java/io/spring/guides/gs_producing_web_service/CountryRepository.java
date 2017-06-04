@@ -142,12 +142,17 @@ public class CountryRepository {
 
         if (isCountryInTheList(name)) {
             Country editedCountry = findCountry(name);
+            boolean editCapital = false;
+            boolean editPopulation = false;
+            boolean editCurrency = false;
 
             if (capital.length()!=0 && !capital.equals("?")) {
-                editedCountry.setCapital(capital);
+                editCapital = true;
+
             }
             if (population>0) {
-                editedCountry.setPopulation(population);
+                editPopulation = true;
+
             }
             else if (population==0)  {
 
@@ -157,10 +162,18 @@ public class CountryRepository {
             }
 
             if (Currency.isMember(currency)) {
-                editedCountry.setCurrency(currency);
+                editCurrency = true;
+
             }
             else {
                 Assert.isTrue(1==2,"Currency is not in the list");
+            }
+
+            if (editCurrency && editPopulation && editCurrency) {
+                editedCountry.setCapital(capital);
+                editedCountry.setPopulation(population);
+                editedCountry.setCurrency(currency);
+
             }
 
 
