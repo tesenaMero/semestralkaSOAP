@@ -17,21 +17,15 @@ import javax.xml.bind.annotation.XmlType;
         propOrder = {"name", "population", "capital", "currency"}
 )
 public class Country {
-    @XmlElement(
-            required = true
-    )
+    @XmlElement( required = true)
     protected String name;
+
     protected int population;
-    @XmlElement(
-            required = true
-    )
+
+    @XmlElement( required = true )
     protected String capital;
-    @XmlElement(
-            required = true
-    )
-    @XmlSchemaType(
-            name = "string"
-    )
+
+    @XmlElement( required = true)
     protected Currency currency;
 
     public Country() {

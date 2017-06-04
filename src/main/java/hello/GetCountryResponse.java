@@ -17,14 +17,15 @@ import javax.xml.bind.annotation.XmlType;
         propOrder = {"country"}
 )
 @XmlRootElement(
-        name = "getCountryResponse",
-        namespace="http://hello"
+        name = "getCountryResponse"
 )
 public class GetCountryResponse {
 
+    @XmlElement(required = false)
     protected Country country;
 
     public GetCountryResponse() {
+
     }
 
     public Country getCountry() {

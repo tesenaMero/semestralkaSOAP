@@ -9,7 +9,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class CountryEndpoint {
-    private static final String NAMESPACE_URI = "http://hello";
+    private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
 
     private CountryRepository countryRepository;
 
@@ -27,7 +27,9 @@ public class CountryEndpoint {
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCountryRequest")
+
+
+    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCountryRequest")
     @ResponsePayload
     public CreateCountryResponse createCountry(@RequestPayload CreateCountryRequest request) {
         CreateCountryResponse response = new CreateCountryResponse();
@@ -53,5 +55,5 @@ public class CountryEndpoint {
 
         return response;
     }
-
+*/
 }

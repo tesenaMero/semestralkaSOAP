@@ -2,16 +2,17 @@ package hello;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 @Component
 public class CountryRepository {
-    private static final List<Country> countries = new ArrayList<Country>();
+    private static final Map<String, Country> countries = new HashMap<>();
 
-    @PostConstruct
     public void initData() {
         Country spain = new Country();
         spain.setName("Spain");
@@ -19,7 +20,7 @@ public class CountryRepository {
         spain.setCurrency(Currency.EUR);
         spain.setPopulation(46704314);
 
-        countries.add(spain);
+        countries.put(spain.getName(), spain);
 
         Country poland = new Country();
         poland.setName("Poland");
@@ -27,7 +28,7 @@ public class CountryRepository {
         poland.setCurrency(Currency.PLN);
         poland.setPopulation(38186860);
 
-        countries.add(poland);
+        countries.put(poland.getName(), poland);
 
         Country uk = new Country();
         uk.setName("United Kingdom");
@@ -35,7 +36,8 @@ public class CountryRepository {
         uk.setCurrency(Currency.GBP);
         uk.setPopulation(63705000);
 
-        countries.add(uk);
+        countries.put(uk.getName(), uk);
+
 
         Country china = new Country();
         china.setName("China");
@@ -43,23 +45,25 @@ public class CountryRepository {
         china.setCurrency(Currency.CNY);
         china.setPopulation(1373541278);
 
-        countries.add(china);
+        countries.put(china.getName(), china);
     }
 
     public Country findCountry(String name) {
         Assert.notNull(name, "The country's name must not be null");
         Country result = null;
 
-        for (Country country : countries) {
-            if (name.equals(country.getName())) {
-                result = country;
-            }
+        try {
+        result = countries.get(name);
         }
+        catch (NullPointerException e) {
+            Assert.isTrue(1==2,"The country is not in the list");
+        }
+
 
         return result;
     }
 
-    public String addCountry(String name, String capital, Currency currency, int population){
+    /**public String addCountry(String name, String capital, Currency currency, int population){
         Assert.notNull(name, "The country's name must not be null");
         String lol = Integer.toString(population);
         boolean number = true;
@@ -127,7 +131,7 @@ public class CountryRepository {
         }
     }
 
-
+*/
 
 
 }

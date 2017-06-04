@@ -23,6 +23,11 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
+
+repositories {
+    mavenCentral()
+}
+
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
@@ -65,14 +70,11 @@ configurations {
 }
 
 jar {
-    baseName = 'hello'
+    baseName = 'gs-producing-web-service'
     version =  '0.1.0'
     from genJaxb.classesDir
 }
 
-repositories {
-    mavenCentral()
-}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
